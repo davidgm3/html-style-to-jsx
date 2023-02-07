@@ -22,16 +22,23 @@ function App() {
 		);
 	};
 	const getStyleObjectFromString = (str) => {
-		let _str = str.replaceAll("'", '').replace('"', '');
 		const style = {};
-		_str.split(';').forEach((el) => {
-			const [property, value] = el.split(':');
-			console.log(property, value);
-			if (!property) return;
+		try {
+			let _str = str.replaceAll("'", '').trim();
 
-			const formattedProperty = formatStringToCamelCase(property.trim());
-			style[formattedProperty] = value.trim();
-		});
+			_str.split(';').forEach((el) => {
+				const [property, value] = el.split(':');
+				console.log(property, value);
+				if (!property) return;
+
+				const formattedProperty = formatStringToCamelCase(
+					property.trim()
+				);
+				style[formattedProperty] = value.trim();
+			});
+		} catch (error) {
+			return 'Invalid input';
+		}
 
 		return style;
 	};
@@ -56,9 +63,7 @@ function App() {
 				></textarea>
 				<h2 className='text-2xl mb-2'>Result</h2>
 				<div className='shadow-md rounded-md p-2 w-full bg-white min-h-[200px]'>
-					<pre>
-						{JSON.stringify(getStyleObjectFromString(currentInput))}
-					</pre>
+					{JSON.stringify(getStyleObjectFromString(currentInput))}
 				</div>
 			</div>
 		</>

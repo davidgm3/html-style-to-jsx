@@ -24,7 +24,7 @@ function App() {
 	const getStyleObjectFromString = (str) => {
 		const style = {};
 		try {
-			let _str = str.replaceAll("'", '').trim();
+			let _str = str.replaceAll("'", '').replaceAll('"', '').trim();
 
 			_str.split(';').forEach((el) => {
 				const [property, value] = el.split(':');
@@ -63,7 +63,13 @@ function App() {
 				></textarea>
 				<h2 className='text-2xl mb-2'>Result</h2>
 				<div className='shadow-md rounded-md p-2 w-full bg-white min-h-[200px]'>
-					{JSON.stringify(getStyleObjectFromString(currentInput))}
+					<pre>
+						{JSON.stringify(
+							getStyleObjectFromString(currentInput),
+							null,
+							2
+						)}
+					</pre>
 				</div>
 			</div>
 		</>

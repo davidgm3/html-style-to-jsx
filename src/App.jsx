@@ -22,9 +22,11 @@ function App() {
 		);
 	};
 	const getStyleObjectFromString = (str) => {
+		let _str = str.replaceAll("'", '').replace('"', '');
 		const style = {};
-		str.split(';').forEach((el) => {
+		_str.split(';').forEach((el) => {
 			const [property, value] = el.split(':');
+			console.log(property, value);
 			if (!property) return;
 
 			const formattedProperty = formatStringToCamelCase(property.trim());

@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+	@apply bg-slate-400 min-h-screen min-w-full;
+}
+#root {
+	@apply min-h-screen;
+}

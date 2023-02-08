@@ -49,10 +49,10 @@ function App() {
 
 	return (
 		<>
-			<h1 className='text-4xl text-center mt-4 mb-20 font-bold'>
+			<h1 className='text-4xl text-center  mb-20 font-bold'>
 				HTML to JSX styles
 			</h1>
-			<div className='h-screen  flex  items-center flex-col max-w-4xl w-5/6 mx-auto'>
+			<div className='h-full flex  items-center flex-col max-w-4xl w-5/6 mx-auto'>
 				<h2 className='text-2xl mb-2'>Input</h2>
 				<textarea
 					ref={textAreaRef}
